@@ -40,6 +40,7 @@ export class NoteService {
     };
   }
 
+  // Get item by id
   getNote(id: number): Observable<Note> {
     const url = `${noteUrl}/${id}`;
     return this.http.get<Note>(url).pipe(
@@ -48,11 +49,30 @@ export class NoteService {
     );
   }
 
+  // Update item by id
   updateNote(id: number, note): Observable<any> {
     const url = `${noteUrl}/${id}`;
     return this.http.put(url, note, httpOptions).pipe(
       tap(_ => console.log(`updated note id=${id}`)),
       catchError(this.handleError<any>('updateNote'))
+    );
+  }
+
+  // Add item
+  addNote (Note): Observable<Note> {
+    return this.http.post<Note>(noteUrl, Note, httpOptions).pipe(
+      tap((Note: Note) => console.log(`added Note w/ id=${Note.id}`)),
+      catchError(this.handleError<Note>('addNote'))
+    );
+  }
+
+  //Delete item
+  deleteNote (id): Observable<Note> {
+    const url = `${noteUrl}/${id}`;
+
+    return this.http.delete<Note>(url, httpOptions).pipe(
+      tap(_ => console.log(`deleted Note id=${id}`)),
+      catchError(this.handleError<Note>('deleteNote'))
     );
   }
 }
