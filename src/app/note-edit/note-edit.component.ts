@@ -12,7 +12,7 @@ import { NoteService } from '../note.service';
 export class NoteEditComponent implements OnInit {
 
   noteForm: FormGroup;
-  _id: number = null;
+  id: number = null;
   description: string = '';
   createdBy: string = '';
   RemindAt: Date = null;
@@ -34,9 +34,9 @@ export class NoteEditComponent implements OnInit {
     });
   }
 
-  getNote(id:number) {
+  getNote(id: number) {
     this.api.getNote(id).subscribe(data => {
-      this._id = id;
+      this.id = id;
       console.log(data)
       // this.noteForm.setValue({
       //   description: data.description,
@@ -50,9 +50,9 @@ export class NoteEditComponent implements OnInit {
 
   onFormSubmit(form: NgForm) {
     this.isLoadingResults = true;
-    this.api.updateNote(this._id, form)
+    this.api.updateNote(this.id, form)
       .subscribe(res => {
-        let id = res['_id'];
+        let id = res['id'];
         this.isLoadingResults = false;
         this.router.navigate(['/note-details', id]);
       }, (err) => {
@@ -62,8 +62,8 @@ export class NoteEditComponent implements OnInit {
       );
   }
 
-  productDetails() {
-    this.router.navigate(['/note-details', this._id]);
+  noteDetails() {
+    this.router.navigate(['/note-details', this.id]);
   }
 
 }

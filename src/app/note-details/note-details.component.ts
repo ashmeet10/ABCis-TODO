@@ -11,7 +11,7 @@ import { NoteService } from '../note.service';
 
 export class NoteDetailsComponent implements OnInit {
 
-  note: Note = { id: '', description: '', createdBy: '', RemindAt: null, isEnabled:null };
+  note: Note = { id: '', description: '', createdBy: '', RemindAt: null, isEnabled: null };
   isLoadingResults = true;
 
   constructor(private route: ActivatedRoute, private api: NoteService, private router: Router) { }
@@ -28,5 +28,19 @@ export class NoteDetailsComponent implements OnInit {
         console.log(this.note);
         this.isLoadingResults = false;
       });
+  }
+
+  //delete item 
+  deleteNote(id) {
+    this.isLoadingResults = true;
+    this.api.deleteNote(id)
+      .subscribe(res => {
+        this.isLoadingResults = false;
+        this.router.navigate(['/']);
+      }, (err) => {
+        console.log(err);
+        this.isLoadingResults = false;
+      }
+      );
   }
 }

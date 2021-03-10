@@ -59,15 +59,15 @@ export class NoteService {
   }
 
   // Add item
-  addNote (Note): Observable<Note> {
+  addNote(Note): Observable<Note> {
     return this.http.post<Note>(noteUrl, Note, httpOptions).pipe(
       tap((Note: Note) => console.log(`added Note w/ id=${Note.id}`)),
       catchError(this.handleError<Note>('addNote'))
     );
   }
 
-  //Delete item
-  deleteNote (id): Observable<Note> {
+  // Delete item by Id
+  deleteNote(id): Observable<Note> {
     const url = `${noteUrl}/${id}`;
 
     return this.http.delete<Note>(url, httpOptions).pipe(
