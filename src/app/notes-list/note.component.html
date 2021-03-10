@@ -31,7 +31,7 @@
       <!-- Remind At -->
       <ng-container matColumnDef="RemindAt">
         <th mat-header-cell *matHeaderCellDef>Remind At</th>
-        <td mat-cell *matCellDef="let element"> {{element.RemindAt}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.RemindAt | date:'medium'}} </td>
       </ng-container>
 
       <!-- Is Enabled -->
