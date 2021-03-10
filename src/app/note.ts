@@ -1,4 +1,4 @@
-export interface INote {
+export class Note {
     id: string;
     description: string;
     createdBy: string;

@@ -1,0 +1,28 @@
+<div class="example-container mat-elevation-z8">
+    <div
+         *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+    <div class="button-row">
+      <a mat-flat-button color="primary" [routerLink]="['/']"><mat-icon>list</mat-icon></a>
+    </div>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title><h2>{{note.createdBy}}</h2></mat-card-title>
+        <mat-card-subtitle>{{note.isEnabled}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <dl>
+          <dt>Description:</dt>
+          <dd>{{note.description}}</dd>
+          <dt>Remind At:</dt>
+          <dd>{{note.RemindAt | date}}</dd>
+        </dl>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-flat-button color="primary" [routerLink]="['/note-edit', note.id]"><mat-icon>edit</mat-icon></a>
+        <!-- <a mat-flat-button color="warn" (click)="deleteItem(note.id)"><mat-icon>delete</mat-icon></a> -->
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  
