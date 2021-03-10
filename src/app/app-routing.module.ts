@@ -22,7 +22,7 @@ const routes: Routes = [
   {
     path: 'note-add',
     component: NoteAddComponent,
-    data: { title: 'Add ToDo' }
+    data: { title: 'Add ToDo Item' }
   },
   {
     path: 'note-edit/:id',

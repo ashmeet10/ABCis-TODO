@@ -9,6 +9,7 @@ import { NoteService } from '../note.service';
   styleUrls: ['./note-add.component.scss']
 })
 export class NoteAddComponent implements OnInit {
+
   noteForm: FormGroup;
   id: number = null;
   description: string = '';

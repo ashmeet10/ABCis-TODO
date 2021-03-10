@@ -1,1 +1,22 @@
-<p>note-add works!</p>
+<mat-card class="mat-elevation-z8">
+    <form [formGroup]="noteForm" (ngSubmit)="onFormSubmit(noteForm.value)">
+        <mat-form-field>
+            <input matInput placeholder="description" formControlName="description">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="createdBy" formControlName="createdBy">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="datetime-local" placeholder="Remind At" formControlName="RemindAt">
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+            <mat-checkbox labelPosition="before" checked="true">Enabled?</mat-checkbox>
+        </mat-form-field>
+        <div class="button-row">
+            <button type="submit" [disabled]="!noteForm.valid" mat-flat-button color="primary">
+                <mat-icon>save</mat-icon>
+            </button>
+        </div>
+    </form>
+</mat-card>
